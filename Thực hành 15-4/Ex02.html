@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex02</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+        
+        h1 {
+            margin-top: 20px;
+            margin-bottom: 30px;
+            color: #333;
+        }
+        
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .result {
+            margin-top: 20px;
+            text-align: left;
+        }
+        
+        .result p {
+            margin: 10px 0;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Bai 2</h1>
+
+    <script>
+        function inputArray() {
+            const input = prompt("Nhập các số nguyên, cách nhau bằng dấu phẩy (ví dụ: 1, 2, 3):");
+            const inputArray = input.split(',').map(num => parseInt(num.trim(), 10));
+            return inputArray;
+        }
+
+        window.onload = function() {
+            const arr = inputArray();
+
+            document.write("Số nguyên lớn nhất trong mảng: " + findMaxInt(arr) + "<br>");
+            document.write("Các số chính phương trong mảng: " + findPerfectNumber(arr) + "<br>");
+            document.write("Các số lớn hơn trung bình cộng: " + findNumberGreaterThanAverage(arr) + "<br>");
+            document.write("Trung bình cộng của các số không âm: " + caculatorAverageOfNonNegativeNumber(arr) + "<br>");
+        };
+
+        function findMaxInt(arr) {
+            let max = arr[0];
+            for (let i = 1; i < arr.length; i++) {
+                if (arr[i] > max) {
+                    max = arr[i];
+                }
+            }
+            return max;
+        }
+
+        function findPerfectNumber(arr) {
+            return arr.filter(num => Math.sqrt(num) % 1 === 0);
+        }
+
+        function findNumberGreaterThanAverage(arr) {
+            let average = 0;
+            let newArray = [];
+            let sum = 0;
+            for (let i = 0; i < arr.length; i++) {
+                sum += arr[i];
+            }
+            average = sum / arr.length;
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] > average) {
+                    newArray.push(arr[i]);
+                }
+            }
+            return newArray;
+        }
+
+        function caculatorAverageOfNonNegativeNumber(arr) {
+            let countNonNegativeNumber = 0;
+            let sumOfNonNegativeNumber = 0;
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] >= 0) {
+                    countNonNegativeNumber += 1;
+                    sumOfNonNegativeNumber += arr[i];
+                }
+            }
+            return sumOfNonNegativeNumber / countNonNegativeNumber;
+        }
+    </script>
+</body>
+
+</html>
