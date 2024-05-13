@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EX03</title>
+</head>
+<style>
+    .image {
+        margin: 200px auto;
+        width: 50%;
+        height: 300px;
+
+        overflow: hidden;
+        position: relative;
+    }
+    
+    .image img {
+        width: 100%;
+        height: auto;
+        left: 0;
+        transition: transform 0.5s, opacity 0.5s;
+    }
+</style>
+
+<body>
+    <div class="image">
+        <img id="img" onclick="changeImage()" src="image1.jpg">
+    </div>
+    <script>
+        var index = 0;
+        var imgs = [
+            "image1.jpg",
+            "image2.jpg",
+            "image3.jpg",
+            "image4.jpg",
+            "image5.jpg"
+        ];
+        var intervalId = setInterval(changeImage, 5000);
+        var imgElement = document.getElementById('img');
+
+        function changeImage() {
+            index++;
+            if (index >= imgs.length) {
+                index = 0;
+            }
+            imgElement.style.opacity = 0;
+            setTimeout(function() {
+                imgElement.src = imgs[index];
+                imgElement.style.opacity = 1;
+            }, 250);
+            resetInterval();
+        }
+
+        function resetInterval() {
+            clearInterval(intervalId);
+            intervalId = setInterval(changeImage, 5000);
+        }
+    </script>
+</body>
+
+</html>
