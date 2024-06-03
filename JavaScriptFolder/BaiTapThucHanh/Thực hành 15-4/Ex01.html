@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bai01</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+        
+        h1 {
+            margin-top: 50px;
+        }
+        
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .result {
+            margin-top: 20px;
+        }
+        
+        .result p {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Bai 1</h1>
+        <script>
+            function inputArray() {
+                const input = prompt("Nhập các số nguyên, cách nhau bằng dấu phẩy (ví dụ: 1, 2, 3):");
+                const inputArray = input.split(',').map(num => parseInt(num.trim(), 10));
+                return inputArray;
+            }
+
+            const Array = inputArray();
+            document.write("<div class='result'>");
+            document.write("<p>Mảng ban đầu : " + Array + "</p>");
+            const sortedArray = Array.slice().sort((a, b) => a - b);
+            document.write("<p>Mảng sau khi sắp xếp : " + sortedArray + "</p>");
+            const uniqueSet = new Set(Array);
+            const uniqueArray = [...uniqueSet];
+            document.write("<p>Mảng loại bỏ các phần tử trùng nhau: " + uniqueArray + "</p>");
+            document.write("</div>");
+        </script>
+    </div>
+</body>
+
+</html>

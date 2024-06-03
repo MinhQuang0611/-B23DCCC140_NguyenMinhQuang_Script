@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EX02 </title>
+    <script src="htItemtps://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+
+    <input type="text" id="newItemInput">
+    <button type="button" id="addItemBtn">Add</button>
+
+    <ul id="itemList">
+    </ul>
+
+    <script>
+        $(document).ready(function() {
+            $("#addItemBtn").click(function() {
+                var newItemValue = $("#newItemInput").val().trim();
+                if (newItemValue !== "") {
+                    $("#itemList").append("<li>" + newItemValue + "</li>");
+                    $("#newItemInput").val("");
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

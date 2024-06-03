@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rectangular Volume Calculator</title>
+    <style>
+        /* Add some basic styling if needed */
+        
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Rectangular Volume Calculator</h1>
+    <form id="volumeCalculator">
+        <label for="width">Width (feet):</label>
+        <input type="number" id="width" step="0.01" required><br>
+
+        <label for="length">Length (feet):</label>
+        <input type="number" id="length" step="0.01" required><br>
+
+        <label for="height">Height (feet):</label>
+        <input type="range" id="height" min="0" max="1000" value="0"><br>
+        <span id="heightValue">0 feet</span><br>
+
+        <button type="button" onclick="calculateVolume()">Calculate Volume</button>
+    </form>
+
+    <p id="result"></p>
+
+    <script>
+        function calculateVolume() {
+            const width = parseFloat(document.getElementById("width").value);
+            const length = parseFloat(document.getElementById("length").value);
+            const height = parseFloat(document.getElementById("height").value);
+
+            const volume = width * length * height;
+            document.getElementById("result").textContent = `Volume: ${volume.toFixed(2)} cubic feet`;
+        }
+
+        // Update height value display when slider changes
+        document.getElementById("height").addEventListener("input", function() {
+            document.getElementById("heightValue").textContent = `${this.value} feet`;
+        });
+    </script>
+</body>
+
+</html>

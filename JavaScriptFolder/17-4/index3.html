@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sức mạnh javascript</title>
+</head>
+
+<body>
+    Enter your name: <input type="text" name="" id="fname" onblur="myFunction()">
+    <p>Khi bạn kích chuột ra khỏi ô input và bạn sẽ nhận thấy kết quả</p>
+    <script type="text/javascript">
+        function myFunction() {
+            var x = document.getElementById("fname");
+            x.value = x.value.toUpperCase(); // viết hoa chữ
+        }
+    </script>
+</body>
+
+</html>

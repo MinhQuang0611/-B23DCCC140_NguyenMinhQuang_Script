@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        var fruits = ["Apple", "Banana", "Orange", "Mango"];
+
+        document.write("<ul>");
+        fruits.forEach(function(fruit) {
+            document.write("<li>" + fruit + "</li>");
+        });
+        document.write("</ul>");
+    </script>
+
+    <script>
+        var arr = [1, 2, 3, 4, 5];
+
+        document.write("Độ dài của mảng:", arr.length, "<br>");
+        document.write("Chuỗi kết quả sau khi nối các phần tử của mảng:", arr.join(", "), "<br>");
+
+        var arr2 = [6, 7, 8];
+        var arr3 = arr.concat(arr2);
+        document.write("Mảng mới sau khi kết hợp:", arr3, "<br>");
+
+        var slicedArr = arr3.slice(2, 5);
+        document.write("Phần của mảng sau khi được trích xuất:", slicedArr, "<br>");
+
+        var reversedArr = arr3.reverse();
+        document.write("Mảng sau khi được đảo ngược:", reversedArr, "<br>");
+
+        var sortedArr = arr3.sort((a, b) => a - b);
+        document.write("Mảng sau khi được sắp xếp:", sortedArr, "<br>");
+
+        arr.push(6);
+        document.write("Mảng sau khi được thêm một phần tử:", arr, "<br>");
+
+        var poppedElement = arr.pop();
+        document.write("Mảng sau khi được loại bỏ phần tử cuối cùng:", arr, "<br>");
+        document.write("Phần tử đã bị loại bỏ:", poppedElement, "<br>");
+
+        arr.unshift(0);
+        document.write("Mảng sau khi được thêm một phần tử vào đầu:", arr, "<br>");
+
+        var shiftedElement = arr.shift();
+        document.write("Mảng sau khi được loại bỏ phần tử đầu tiên:", arr, "<br>");
+        document.write("Phần tử đã bị loại bỏ:", shiftedElement, "<br>");
+    </script>
+
+</body>
+
+</html>

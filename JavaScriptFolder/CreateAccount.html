@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        p {
+            font-size: 30px;
+            text-align: center;
+        }
+        
+        body {
+            background-color: rgb(219, 239, 239);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        
+        .container {
+            width: 40%;
+            background-color: white;
+            padding: 20px;
+            border: 2px solid rgb(2, 25, 32);
+            border-radius: 5px;
+            color: rgb(109, 212, 205);
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        .row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .row input[type="text"],
+        .row input[type="email"],
+        .row input[type="password"],
+        .row input[type="number"],
+        .row textarea {
+            width: 200px;
+            padding: 5px;
+            border: 2px solid rgb(2, 25, 32);
+            border-radius: 3px;
+        }
+        
+        .row label {
+            margin-bottom: 5px;
+        }
+        
+        .row .radio-label,
+        .row .checkbox-label {
+            display: inline-block;
+            margin-right: 10px;
+        }
+        
+        .submit-btn {
+            text-align: center;
+        }
+        
+        .submit-btn button {
+            padding: 10px 20px;
+            font-size: 20px;
+            background-color: rgb(2, 25, 32);
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+    </style>
+    <title>Create Account</title>
+</head>
+
+<body>
+    <div class="container">
+        <p>Create Account</p>
+        <div class="row">
+            <div class="left-column">
+                <label for="fname">First Name*:</label>
+                <br>
+                <input type="text" id="fname" name="fname">
+            </div>
+            <div class="right-column">
+                <label for="lname">Last Name:</label>
+                <br>
+                <input type="text" id="lname" name="lname">
+            </div>
+        </div>
+        <div class="row">
+            <div class="left-column">
+                <label for="File">Upload File</label>
+                <br>
+                <input type="file" id="File" name="File">
+            </div>
+            <div class="right-column">
+                <label for="email">Email*:</label>
+                <br>
+                <input type="email" id="email" name="email">
+            </div>
+        </div>
+        <div class="row">
+            <div class="left-column">
+                <label for="pass">Password*:</label>
+                <br>
+                <input type="password" id="pass" name="pass">
+            </div>
+            <div class="right-column">
+                <label for="ConfirmPass">Confirm Password*:</label>
+                <br>
+                <input type="password" id="ConfirmPass" name="ConfirmPass">
+            </div>
+        </div>
+        <div class="row">
+            <div class="left-column">
+                <label>Gender:</label>
+                <br>
+                <span class="radio-label">
+                    <input type="radio" id="Male" name="Gender" value="Male">
+                    <label for="Male">Male</label>
+                </span>
+                <span class="radio-label">
+                    <input type="radio" id="Female" name="Gender" value="Female">
+                    <label for="Female">Female</label>
+                </span>
+            </div>
+            <div class="right-column">
+                <label>Source of Income:</label>
+                <br>
+                <select id="income" name="income">
+                    <option value="Employment">Employment</option>
+                    <option value="Self-employed">Self-employed</option>
+                    <option value="Investments">Investments</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="left-column">
+                <label for="age">Age:</label>
+                <br>
+                <input type="number" id="age" name="age">
+            </div>
+            <div class="right-column">
+                <label for="hobbies">Hobbies:</label>
+                <br>
+                <span class="checkbox-label">
+                    <input type="checkbox" id="Music" name="hobbies">
+                    <label for="Music">Music</label>
+                </span>
+                <span class="checkbox-label">
+                    <input type="checkbox" id="Sport" name="hobbies">
+                    <label for="Sport">Sport</label>
+                </span>
+                <span class="checkbox-label">
+                    <input type="checkbox" id="Movie" name="hobbies">
+                    <label for="Movie">Movie</label>
+                </span>
+                <span class="checkbox-label">
+                    <input type="checkbox" id="Travel" name="hobbies">
+                    <label for="Travel">Travel</label>
+                </span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="left-column" style="width: 100%;">
+                <label for="Bio">Bio:</label>
+                <br>
+                <textarea id="Bio" name="Bio" style="width: 100%; height: 150px; font-size: 14px;"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="submit-btn" style="width: 100%;">
+                <button type="submit">Submit</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

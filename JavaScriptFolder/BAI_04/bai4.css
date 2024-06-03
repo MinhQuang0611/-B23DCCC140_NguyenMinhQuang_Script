@@ -1,0 +1,105 @@
+*{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+.main{
+	background-color: white;
+	background-image:linear-gradient(lightgray,white,rgb(96, 221, 94));
+	width: 100%;
+
+}
+
+.content {
+	line-height: 0.8;
+}
+
+.list-head li {
+
+	display: inline-block;
+}
+
+.list-head li a {
+	display: block;
+	padding-right: 5px;
+}
+.list-head .head {
+	font-size: 25px;
+	line-height: 35px;
+}
+.list-head ul{
+	padding-bottom: 0px;
+	height:35px;
+	margin-top:-14px;
+	font-family: Helvetica,sans-serif;
+
+}
+.list-head .text{
+	line-height: 35px;
+	font-size: 20px;
+	font-weight: 400;
+}
+.list-head .text:hover{
+	text-decoration: underline;
+	color: red;
+	cursor: progress;
+}
+
+
+
+
+
+.list-head2 li {
+
+	display: inline-block;
+}
+
+
+.list-head2 li a {
+	display: block;
+	padding-right: 5px;
+}
+.list-head2 .head2 {
+	font-size: 36px;
+	line-height: 35pxpx;
+}
+.list-head2 ul{
+	padding-top: 0px;
+	height:35px;
+	margin-top:36px;
+
+}
+.list-head2 .text2{
+	line-height: 35px;
+	font-weight: 900;
+	font-size: 22px;
+
+}
+.list-head2 .text2:hover {
+	color:blue;
+	text-decoration: underline;
+	cursor: pointer;
+
+}
+
+
+
+
+
+.col3-table{
+	width: 200px;
+	border-radius: 10px;
+	border:1px solid black;
+	height: 20px;
+
+}
+
+.col4 {
+	margin-bottom: 10px;
+}
+.col4 tr:hover{
+	color: red;
+}
+.col4-list {
+	width: 120px;
+}

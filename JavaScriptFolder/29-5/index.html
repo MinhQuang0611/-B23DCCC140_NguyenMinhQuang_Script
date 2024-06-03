@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body>
+    <h1>Danh sách người dùng</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <td>ID</td>
+                <td>Name</td>
+                <td>Email</td>
+                <td>Action</td>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Data will be dynamically loaded here -->
+        </tbody>
+    </table>
+    <button id="load-data">Load data</button>
+
+    <!-- Add User Form -->
+    <h2>Add User</h2>
+    <form id="add-user-form">
+        <input type="text" id="add-name" placeholder="Name" required>
+        <input type="email" id="add-email" placeholder="Email" required>
+        <button type="submit">Add User</button>
+    </form>
+
+    <!-- Update User Form (Initially hidden) -->
+    <h2>Update User</h2>
+    <form id="update-user-form" style="display: none;">
+        <input type="hidden" id="update-id">
+        <input type="text" id="update-name" placeholder="Name" required>
+        <input type="email" id="update-email" placeholder="Email" required>
+        <button type="submit">Update User</button>
+    </form>
+
+    <script>
+        $(document).ready(function() {
+            // Load Data
+            $('#load-data').click(function() {
+                $.ajax({
+                    url: "http://api.uduer.com/users",
+                    type: "GET",
+                    success: function(result) {
+                        var data = result.data.users;
+                        var tbody = $('tbody');
+                        tbody.empty();
+                        data.forEach(function(user) {
+                            tbody.append(
+                                '<tr>' +
+                                '<td>' + user._id + '</td>' +
+                                '<td>' + user.name + '</td>' +
+                                '<td>' + user.email + '</td>' +
+                                '<td>' +
+                                '<button class="edit-user" data-id="' + user._id + '">Edit</button>' +
+                                '<button class="delete-user" data-id="' + user._id + '">Delete</button>' +
+                                '</td>' +
+                                '</tr>'
+                            );
+                        });
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+                });
+            });
+
+            // Add User
+            $('#add-user-form').submit(function(e) {
+                e.preventDefault();
+                var name = $('#add-name').val();
+var email = $('#add-email').val();
+
+                $.ajax({
+                    url: "http://api.uduer.com/users",
+                    type: "POST",
+                    contentType: "application/json",
+                    data: JSON.stringify({
+                        name: name,
+                        email: email
+                    }),
+                    success: function(result) {
+                        $('#load-data').click(); // Reload data after adding
+                        $('#add-name').val('');
+                        $('#add-email').val('');
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+                });
+            });
+
+            // Edit User
+            $(document).on('click', '.edit-user', function() {
+                var userId = $(this).data('id');
+                $.ajax({
+                    url: "http://api.uduer.com/users/" + userId,
+                    type: "GET",
+                    success: function(result) {
+                        var user = result.data;
+                        $('#update-id').val(user._id);
+                        $('#update-name').val(user.name);
+                        $('#update-email').val(user.email);
+                        $('#update-user-form').show();
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+                });
+            });
+
+            // Update User
+            $('#update-user-form').submit(function(e) {
+                e.preventDefault();
+                var id = $('#update-id').val();
+                var name = $('#update-name').val();
+                var email = $('#update-email').val();
+
+                $.ajax({
+                    url: "http://api.uduer.com/users/" + id,
+                    type: "PUT",
+                    contentType: "application/json",
+                    data: JSON.stringify({
+                        name: name,
+                        email: email
+                    }),
+                    success: function(result) {
+                        $('#load-data').click(); // Reload data after updating
+                        $('#update-user-form').hide();
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+                });
+            });
+
+            // Delete User
+            $(document).on('click', '.delete-user', function() {
+                var userId = $(this).data('id');
+                $.ajax({
+                    url: "http://api.uduer.com/users/" + userId,
+                    type: "DELETE",
+                    success: function(result) {
+                        $('#load-data').click(); // Reload data after deleting
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+                });
+            });
+});
+    </script>
+</body>
+
+</html>

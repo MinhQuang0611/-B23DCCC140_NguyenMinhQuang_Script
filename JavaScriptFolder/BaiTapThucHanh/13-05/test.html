@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test</title>
+    <style>
+        .image {
+            margin: 200px auto;
+            width: 50%;
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .image img {
+            width: 100%;
+            height: auto;
+            position: absolute;
+            left: 0;
+            transition: transform 0.5s, opacity 0.5s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="image">
+        <img id="img" src="image1.jpg">
+    </div>
+    <script>
+        var index = 0;
+        var imgs = [
+            "image1.jpg",
+            "image2.jpg",
+            "image3.jpg",
+            "image4.jpg",
+            "image5.jpg"
+        ];
+        var intervalId = setInterval(changeImage, 5000);
+
+        function changeImage() {
+            var imgElement = document.getElementById('img');
+            index = (index + 1) % imgs.length;
+            imgElement.style.opacity = 0;
+            setTimeout(function() {
+                imgElement.src = imgs[index];
+                imgElement.style.opacity = 1;
+            }, 500);
+        }
+
+        document.getElementById('img').addEventListener('click', resetInterval);
+
+        function resetInterval() {
+            clearInterval(intervalId);
+            intervalId = setInterval(changeImage, 5000);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,114 @@
+<!---- //Nguyen Minh Quang
+ // B23DCCC140
+ // Đề 01
+ SỬ DỤNG JAVASCRIPTS, HTML VÀ CSS XÂY DỰNG MỘT ỨNG DỤNG CÓ CÁC CHỨC NĂNG SAU: 
+ 
+ Có 02 ô Input A và B cho phép người dùng nhập dữ liệu số; 
+ 
+ Có 05 button SUM, SUBTRACT, MULTIPLY, DIVIDE, RESET: 
+ 
+ Khi click vào button nào, hiển thị kết quả tương ứng với dữ liệu nhập vào: SUM (A+B), SUBTRACT (A-B), MULTIPLY (A*B), DIVIDE (A/B); 
+ 
+ Nếu dữ liệu nhập vào không đúng định dạng, in ra cảnh báo yêu cầu người dùng nhập lại; 
+ 
+ Khi click RESET, dữ liệu các ô input được làm trống. 
+ 
+ Điểm cộng: Ứng dụng có giao diện rõ ràng, đẹp và có hiệu ứng hấp dẫn.-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>De 01</title>
+    <style>
+        div {
+            background-color: rgb(229, 233, 233);
+            opacity: 0.9;
+        }
+        
+        .caculator {
+            width: 300px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+        
+        .caculator #display {
+            width: calc(100% - 10px);
+            padding: 5px;
+            margin-bottom: 25px;
+            font-size: 20px;
+        }
+        
+        .caculator #button {
+            display: grid;
+            gap: 5px;
+            grid-template-columns: repeat(4, 1fr);
+        }
+        
+        .caculator button {
+            padding: 10px;
+            font-size: 20px;
+            border: none;
+            border-radius: 20px;
+        }
+        
+        .caculator button:hover {
+            background-color: rgb(184, 219, 213);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="caculator">
+        <input type="text" id="display" readonly>
+        <div class="button">
+            <button onclick="clearDisplay()">C</button>
+            <button onclick="appendToDisplay('0')">0</button>
+            <button onclick="appendToDisplay('1')">1</button>
+            <button onclick="appendToDisplay('2')">2</button>
+            <button onclick="appendToDisplay('3')">3</button>
+            <button onclick="appendToDisplay('4')">4</button>
+            <button onclick="appendToDisplay('5')">5</button>
+            <button onclick="appendToDisplay('6')">6</button>
+            <button onclick="appendToDisplay('7')">7</button>
+            <button onclick="appendToDisplay('8')">8</button>
+            <button onclick="appendToDisplay('9')">9</button>
+            <button onclick="appendToDisplay('+')">+</button>
+            <button onclick="appendToDisplay('-')">-</button>
+            <button onclick="appendToDisplay('*')">*</button>
+            <button onclick="appendToDisplay('/')">/</button>
+            <button onclick="appendToDisplay('.')">.</button>
+
+            <button onclick="caculate()">=</button>
+
+
+        </div>
+
+
+    </div>
+    <script>
+        let displayValue = '';
+
+        function appendToDisplay(value) {
+            displayValue += value
+            document.getElementById('display').value = displayValue
+
+        }
+
+        function clearDisplay() {
+            displayValue = ''
+            document.getElementById('display').value = ''
+        }
+
+        function caculate() {
+            displayValue = eval(displayValue)
+            document.getElementById('display').value = displayValue
+
+        }
+    </script>
+</body>
+
+</html>

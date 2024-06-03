@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Danh sách người dùng</h1>
+    <table id="usersTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <button id="load-data">Load data</button>
+
+    <h2>Thêm người dùng mới</h2>
+    <form id="addUserForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <label for="phone">Phone Number:</label>
+        <input type="text" id="phone" name="phone" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <button type="submit">Add User</button>
+    </form>
+
+    <script>
+        $(document).ready(function() {
+            function loadData() {
+                $.ajax({
+                    url: "http://api.uduer.com/users/",
+                    type: "GET",
+                    success: function(result) {
+                        const data = result.data.users;
+                        const tbody = $('#usersTable tbody');
+                        tbody.empty();
+                        data.forEach(function(user) {
+                            tbody.append(`
+                                <tr>
+                                    <td>${user._id}</td>
+                                    <td>${user.name}</td>
+                                    <td>${user.email}</td>
+                                    <td>${user.phone}</td>
+                                    <td>
+                                        <button class="delete" data-id="${user._id}">Delete</button>
+                                        <button class="update" data-id="${user._id}">Update</button>
+                                    </td>
+                                </tr>
+                            `);
+                        });
+                    },
+                    error: function(error) {
+                        console.error(error);
+                    }
+                });
+            }
+
+            $('#load-data').click(loadData);
+
+            $('#addUserForm').submit(function(event) {
+                event.preventDefault();
+                const data = {
+                    name: $('#name').val(),
+                    email: $('#email').val(),
+                    phone: $('#phone').val(),
+                    password: $('#password').val()
+                };
+                $.ajax({
+                    url: "http://api.uduer.com/users/",
+                    type: "POST",
+                    data: data,
+                    success: function(result) {
+                        console.log("User added:", result);
+                        loadData();
+                        $('#addUserForm')[0].reset();
+                    },
+                    error: function(error) {
+                        console.error(error);
+                    }
+                });
+            });
+
+            $(document).on('click', '.delete', function() {
+                const userId = $(this).data('id');
+                $.ajax({
+                    url: `http://api.uduer.com/users/${userId}`,
+                    type: "DELETE",
+                    success: function(result) {
+                        console.log("User deleted:", result);
+                        loadData();
+                    },
+                    error: function(error) {
+                        console.error(error);
+                    }
+                });
+            });
+
+            $(document).on('click', '.update', function() {
+                const userId = $(this).data('id');
+                const newName = prompt("Enter new name:");
+                const newEmail = prompt("Enter new email:");
+                const newPhone = prompt("Enter new phone number:");
+                if (newName && newEmail && newPhone) {
+                    const data = {
+                        name: newName,
+                        email: newEmail,
+                        phone: newPhone
+                    };
+                    $.ajax({
+                        url: `http://api.uduer.com/users/${userId}`,
+                        type: "PUT",
+                        data: data,
+                        success: function(result) {
+                            console.log("User updated:", result);
+                            loadData();
+                        },
+                        error: function(error) {
+                            console.error(error);
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

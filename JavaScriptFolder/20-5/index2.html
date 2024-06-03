@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>ES6</title>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <script type="text/babel">
+        var x = 10; function myFnc(){ var y = x + 5 /* y được khai báo trong Function */ console.log(y); /* output: 15, y chỉ có ảnh hưởng bên trong Function */ } console.log(y); /* output: Error */ myFnc();
+    </script>
+</body>
+
+</html>

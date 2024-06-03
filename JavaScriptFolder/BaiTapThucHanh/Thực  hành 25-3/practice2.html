@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>practice 2</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .header1 {
+            width: 100%;
+            height: 100px;
+            position: relative;
+        }
+        
+        .header1 .box1 {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            background-color: ;
+            border: 1px solid black;
+            width: 240px;
+            height: 40px;
+            border-radius: 20px;
+        }
+        
+        .box1 input {
+            height: 36px;
+            width: 85%;
+            border: none;
+            padding-left: 20px;
+        }
+        
+        .search-btn {
+            width: 15%;
+            height: 36px;
+            line-height: 36px;
+            float: right;
+            text-align: center;
+        }
+        
+        .box1 input:focus,
+        .box1 input:active,
+        .box1 input {
+            outline: 0;
+            border-radius: 35px 0 0 30px;
+        }
+        
+        .header2 {
+            height: 41px;
+            background-color: #0f6c32;
+            width: 100%;
+        }
+        
+        #nav li {
+            display: inline-block;
+        }
+        
+        #nav li a {
+            display: block;
+            padding: 12px 24px;
+            text-decoration: none;
+            color: white;
+            font-family: Helvetica, sans-serif;
+        }
+        
+        #nav li a:hover {
+            background: white;
+            color: black;
+        }
+        
+        li.col-left-2-item {
+            border-bottom: 1px solid #d4b6b6;
+            margin-bottom: 7px;
+            padding-bottom: 7px;
+        }
+        
+        ul.col-left-2-list {
+            margin-left: 15px;
+            font-family: Helvetica, sans-serif;
+            font-weight: 700;
+        }
+        
+        ul.col-left-2-list li:hover {
+            color: red;
+            cursor: pointer;
+        }
+        
+        h2.col-left-2-title {
+            text-transform: uppercase;
+            color: #8686c9;
+            border-top: 2px solid #8686c9;
+            padding-top: 10px;
+            font-size: 21px;
+            margin-bottom: 12px;
+        }
+        
+        h2.col1-title:hover {
+            color: red;
+            cursor: pointer;
+        }
+        
+        ul.col1-list {
+            margin-left: 15px;
+            line-height: 1.6;
+            font-weight: 600;
+        }
+        
+        p.col1-text {
+            margin-bottom: 10px;
+        }
+        
+        table.col-left-table {
+            padding: 0 10px 0 20px;
+        }
+        
+        h2.col1-title {
+            margin-bottom: 16px;
+        }
+        
+        img.col1-img {
+            width: 100%;
+        }
+        
+        .table {
+            width: 100%;
+        }
+        
+        .col {
+            display: flex;
+            flex-direction: row;
+        }
+        
+        .col-left {
+            width: 70%;
+        }
+        
+        .col-right {
+            width: 30%;
+        }
+        
+        .col-right img {
+            width: 100%;
+        }
+        
+        .col-left-1 {
+            width: 100%;
+            text-align: left;
+            font-family: Helvetica, sans-serif;
+        }
+        
+        .col-left-2 {
+            width: 100%;
+            display: block;
+            text-align: left;
+            /* padding: 0 10px 0 30px; */
+            border-left: 2px solid #ece6e6;
+            margin: 0 10px 0;
+            padding: 0 30px 0 13px;
+        }
+        
+        .box {
+            width: calc(100% / 3);
+        }
+        
+        .list-box {
+            display: flex;
+            gap: 20px;
+            padding: 0 40px 0 20px;
+            margin-top: 30px;
+            font-family: Helvetica, sans-serif;
+        }
+        
+        .list-box h2:hover {
+            color: red;
+            cursor: pointer;
+        }
+        
+        .box-list {
+            width: calc(100% / 3);
+        }
+        
+        .list-box-img {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header1">
+        <img src="https://cdnweb.dantri.com.vn/dist/static-logo.1-0-1.742f36bc45f3443d0e59.svg" style="height: 100px;">
+        <div class="box1">
+            <input type="text" name="text" placeholder="Tìm kiếm tin tức">
+            <a href="#" class="search-btn">
+                <i class="fa fa-search"></i>
+            </a>
+
+        </div>
+    </div>
+
+    <div class="header2">
+        <div id="nav">
+            <ul class="content-list">
+                <li><a href="">Video</a></li>
+                <li><a href="">Sự kiện</a></li>
+                <li><a href="">Xã hội </a></li>
+                <li><a href="">Thế giới</a></li>
+                <li><a href="">Kinh doanh</a></li>
+                <li><a href="">Thể thao</a></li>
+                <li><a href="">Bất động sản</a></li>
+                <li><a href="">Công nghệ</a></li>
+                <li><a href="">Sức khỏe</a></li>
+                <li><a href="">Văn hóa</a></li>
+                <li><a href="">Giải trí</a></li>
+                <li><a href="">Mua bán</a></li>
+                <li><a href="">An ninh</a></li>
+                <li><a href="">Pháp luật </a></li>
+            </ul>
+        </div>
+    </div>
+    <img src="https://homepage.momocdn.net/blogscontents/momo-upload-api-210624162431-637601486716118062.png" style="width: 1349px;">
+
+
+    <table class="table">
+        <tr class="col">
+            <td class="col-left">
+                <table class="col-left-table" style="width: 100%;">
+                    <tr style="display: flex;">
+                        <td>
+                            <div class="col-left-1">
+                                <img src="https://cdnphoto.dantri.com.vn/nlIR02Rwq6uhtlVk5f_GJBIRch4=/thumb_w/990/2021/07/15/1000x1-1626334315183.jpg" alt="" class="col1-img">
+                                <h2 class="col1-title">Indonesia đang trong "kịch bản tồi tệ nhất",nguy cơ thành Ấn Độ thứ hai</h2>
+                                <p class="col1-text">(Dân trí)-Indoesia thừa nhận đang ở trong "kịch bản tồi tệ nhất: khi số ca nhiễm và tử vong vì Covid-19 tăng vọt do biến thẻ Delta.</p>
+                                <ul class="col1-list">
+                                    <li class="col1-item">Gần 1.000 người chết vì Covid-19 trong ngày tại Indonesia</li>
+                                    <li class="col1-item">Lí do khiến Indonexia trở thành ổ dịch Covid-19 lớn nhất Đông Nam Á</li>
+                                    <li class="col1-item">Bi kịch bện nhân Covid-19 Indonesia lìa đời tại nhà giữa cơn khát oxi</li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-left-2">
+                                <h2 class="col-left-2-title">tin tức sự kiện</h2>
+                                <ul class="col-left-2-list">
+                                    <li class="col-left-2-item">Thủ tướng triệu tập họp với 27 tỉnh,thành đang "nóng"dịch Covid-19</li>
+                                    <li class="col-left-2-item">Nghị quyết 68/NQ-CP:Ngoài khoản hỗ trợ còn là sự động viên, chia sẻ</li>
+                                    <li class="col-left-2-item">Hàng trăm người chờ mua, hàng hóa ở TPHCM "rất căng thẳng" vì có tin đồn</li>
+                                    <li class="col-left-2-item">9 nhân sự Trung ương giới thiệu không trúng cử đại biểu Quốc hội</li>
+                                    <li class="col-left-2-item">TPHCM phân công lại nhiệm của Chủ tịch Võ Văn Hoan</li>
+                                    <li class="col-left-2-item">Hơn 921.000 liều vắc xin AstraZeneca vừa "hạ cánh" xuống Tân Sân Nhất</li>
+                                    <li class="col-left-2-item">Mỹ lo sốt vó khi "quái vật" Covid-19 trở lại</li>
+                                    <li class="col-left-2-item">Thủ tướng triệu tập họp với 27 tỉnh,thành đang "nóng"dịch Covid-19</li>
+                                    <li class="col-left-2-item">Lộ trình lựa chọn, thí điểm sáp nhập các tỉnh như thế nào?</li>
+                                    <li class="col-left-2-item">Động thái đáng ngờ từ 2 cận vệ hàng đầu của Tổng thống Haiti bị ám sát</li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <div class="list-box">
+                    <div class="box-list">
+                        <img src="https://cdnphoto.dantri.com.vn/KORRe1-XxZxl_WTaNiJc_5GnpbY=/thumb_w/990/2021/07/15/z25828405320182120ecabd39e47443fd2255dd03b252a162499291438611625844269545-1626334920742.jpg" alt="" class="list-box-img">
+                        <h2 class="list-box-title">Vì sao khu công nghiệp Thăng Long liên tiếp có công nhân mắc Covid-19</h2>
+                    </div>
+                    <div class="box-list">
+                        <img src="https://cdnphoto.dantri.com.vn/YliIjgRnafCTUXG7daZrzTlrDQg=/thumb_w/990/2021/07/15/5-copy-1626331066837.jpg" alt="" class="list-box-img">
+                        <h2 class="list-box-title">TP HCM phát tiền hỗ trợ Covid-19 tận nhà, dân nhận qua khe cửa vì sợ dịch</h2>
+                    </div>
+                    <div class="box-list">
+                        <img src="https://cdnphoto.dantri.com.vn/gtK8H3QZ1Bs6FPD8dSHINK1efFI=/zoom/216_144/2021/07/13/tiem-vac-xin-4-1626189414137.jpeg" alt="" class="list-box-img">
+                        <h2 class="list-box-title">Bệnh viện tư nhân ở An Giang cung cấp dịch vụ tiêm vắc xin</h2>
+                    </div>
+                </div>
+            </td>
+
+            <td class="col-right">
+                <img src="https://media.tapchitaichinh.vn/w1480/images/upload/tranthuthuy/06242021/agribank-a0a7.png" alt="">
+                <img src="https://suhastay.com.vn/wp-content/uploads/2023/11/section3-background.jpg" alt="">
+                <img src="https://cdnphoto.dantri.com.vn/5vBo-w7V5KPTiRy2OCNlr918_ow=/thumb_w/990/2021/05/20/trieutraitimmotychi-1621505661757.png" alt="">
+                <img src="https://atpsoftware.vn/wp-content/uploads/2018/11/b6-review-phan-mem-autocad-750x491.jpg" alt="">
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>

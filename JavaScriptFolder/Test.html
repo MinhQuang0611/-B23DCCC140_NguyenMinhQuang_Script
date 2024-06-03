@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bảng HTML</title>
+    <style>
+        .container {
+            width: 100%;
+        }
+        
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+        
+        .col {
+            flex: 1;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        
+        .search-box {
+            width: 200px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        .search-button {
+            padding: 5px 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .bold {
+            font-weight: bold;
+            color: black;
+        }
+        
+        .center {
+            text-align: center;
+        }
+        
+        .full-width {
+            width: 100%;
+        }
+        
+        .img-container {
+            text-align: center;
+        }
+        
+        .img-container img {
+            width: 100%;
+            height: auto;
+        }
+        
+        .wider-column {
+            width: 50%;
+            /* Adjust the width as needed */
+        }
+        
+        .four-images {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .four-images .col {
+            width: 50%;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+        
+        .four-images .col img {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col full-width">
+                <img src="https://cdnweb.dantri.com.vn/dist/static-logo.1-0-1.742f36bc45f3443d0e59.svg" style="width:100px">
+                <form class="center">
+                    <input type="text" placeholder="Tìm kiếm tin tức..." class="search-box">
+                    <button type="submit" class="search-button">Tìm kiếm</button>
+                </form>
+            </div>
+        </div>
+        <div class="row center">
+            <div class="col full-width">
+                <a href="#">Video</a>┃
+                <a href="#">Sự kiện</a>┃
+                <a href="#">Xã hội</a>┃
+                <a href="#">Thế giới</a>┃
+                <a href="#">Kinh doanh</a>┃
+                <a href="#">Thể thao</a>┃
+                <a href="#">Việc làm</a>┃
+                <a href="#">Nhân ái</a>┃
+                <a href="#">Sức khỏe</a>┃
+                <a href="#">Văn hóa</a>┃
+                <a href="#">Giải trí</a>┃
+                <a href="#">Xe++</a>┃
+                <a href="#">Sức mạnh số</a>┃
+                <a href="#">Giáo dục</a>┃
+                <a href="#">An ninh</a>┃
+                <a href="#">Pháp luật</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col img-container">
+                <img src="https://www.vnpayqr.vn/wp-content/uploads/2021/06/1200x300-13.png">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col wider-column">
+                <img src="https://lsvn.vn/storage/vne-news/June2023/3483602417590667426700417585415512322416895n-1-1685791247659780537902.jpg" style="width: 100%; height:auto;">
+                <h2>Indonesia đang trong "Kịch bản tồi tệ nhất", nguy cơ thành Ấn Độ thứ hai</h2>
+                <p>(Dân Trí)- Indonesia thừa nhận đang trong kịch bản tồi tệ nhất khi số ca nhiễm và tử vong vì Covid-19 tăng vọt do biến thể Delta</p>
+                <p class="bold">• Gần 1.000 người chết vì Covid-19 trong ngày tại Indonesia</p>
+                <p class="bold">• Lý do khiến Indonesia thành ổ dịch Covid-19 lớn nhất Đông Nam Á</p>
+                <p class="bold">• Bi kịch bệnh nhân Covid-19 donesia lìa đời tại nhà giữa "cơn khát" ôxy</p>
+            </div>
+            <div class="col">
+                <h3 style="color:blue;">TIN TỨC SỰ KIỆN</h3>
+                <p>• Thủ tướng triệu tập họp với 27 tỉnh, thành đang "nóng" dịch Covid-1</p>
+                <p>• Nghị quyết 68/NQ-CP: Ngoài khoản hỗ trợ còn là sự động viên, chia sẻ</p>
+                <p>•Hàng trăm người chờ mua, hàng hóa ở TPHCM "rất căng thẳng" vì có tin đồn</p>
+                <p>•9 nhân sự Trung ương giới thiệu không trúng cử đại biểu Quốc hội</p>
+                <p>•TPHCM phân công lại nhiệm vụ của Phó Chủ tịch Võ Văn Hoan</p>
+                <p>•Hơn 921.000 liều vắc xin AstraZeneca vừa "hạ cánh" xuống Tân Sơn Nhất</p>
+                <p>•Mỹ lo sốt vó khi "quái vật" Covid-19 bùng phát trở lại</p>
+                <p>• Lộ trình lựa chọn, thí điểm sáp nhập các tỉnh như thế nào?</p>
+                <p>•Hà Nội: Ghi nhận liên tiếp 7 ca dương tính SARS-CoV-2 trong buổi sáng</p>
+                <p>•Động thái đáng ngờ từ 2 cận vệ hàng đầu của Tổng thống Haiti bị ám sát</p>
+            </div>
+            <div class="col four-images">
+                <div class="row">
+                    <div class="col">
+                        <img src="https://media.tapchitaichinh.vn/w1480/images/upload/tranthuthuy/06242021/agribank-a0a7.png">
+                    </div>
+                    <div class="col">
+                        <img src="https://i1-kinhdoanh.vnecdn.net/2018/07/26/25-7-20189-194575210-w500-7064-1532569748.png?w=680&h=0&q=100&dpr=1&fit=crop&s=mqnyK8p9HIcKiKF6IUVWfg">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <img src="https://cdnphoto.dantri.com.vn/Q6fQUoKoafEvbRqWnNjgrwVtQx4=/thumb_w/990/2021/06/17/dantrivnp4-1623891094961.jpg">
+                    </div>
+                    <div class="col">
+                        <img src="https://cdnphoto.dantri.com.vn/KORRe1-XxZxl_WTaNiJc_5GnpbY=/thumb_w/990/2021/07/15/z25828405320182120ecabd39e47443fd2255dd03b252a162499291438611625844269545-1626334920742.jpg">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
