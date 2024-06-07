@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Info</title>
+    <style>
+        .image-container {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+        }
+        
+        .info-box {
+            position: absolute;
+            top: 0;
+            left: 120%;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 10px;
+            display: none;
+        }
+        
+        .info-box.active {
+            display: block;
+        }
+        
+        img {
+            max-width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="image-container">
+        <img src="https://via.placeholder.com/200" alt="Sample Image">
+        <div class="info-box">
+            <p>This is some information about the image.</p>
+            <p>Additional details can go here.</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var imageContainers = document.querySelectorAll('.image-container');
+
+            imageContainers.forEach(function(container) {
+                var image = container.querySelector('img');
+                var infoBox = container.querySelector('.info-box');
+
+                image.addEventListener('click', function() {
+                    infoBox.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+
+</body>
+
+</html>
