@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Các dòng điện thoại nổi bật của Samsung</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        
+        h2 {
+            color: #333;
+        }
+        
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        li {
+            margin: 10px 0;
+        }
+        
+        a {
+            text-decoration: none;
+            color: #007BFF;
+            cursor: pointer;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+        
+        .popup h3 {
+            margin-top: 0;
+        }
+        
+        .popup button {
+            display: block;
+            margin: 20px auto 0;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .popup button:hover {
+            background-color: #0056b3;
+        }
+        
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Các dòng điện thoại nổi bật của Samsung</h2>
+    <p>Samsung Galaxy Z series</p>
+    <ul>
+        <li><a href="#" class="phone-link" data-info="Galaxy Z Fold 5">Samsung Galaxy Z Fold 5</a></li>
+        <li><a href="#" class="phone-link" data-info="Galaxy Z Flip 5">Samsung Galaxy Z Flip 5</a></li>
+        <li><a href="#" class="phone-link" data-info="Galaxy Z Fold 4">Samsung Galaxy Z Fold 4</a></li>
+        <li><a href="#" class="phone-link" data-info="Galaxy Z Flip 4">Samsung Galaxy Z Flip 4</a></li>
+        <li><a href="#" class="phone-link" data-info="Galaxy Z Fold 3">Samsung Galaxy Z Fold 3</a></li>
+        <li><a href="#" class="phone-link" data-info="Galaxy Z Flip 3">Samsung Galaxy Z Flip 3</a></li>
+        <li><a href="#" class="phone-link" data-info="Galaxy Z Fold 2">Samsung Galaxy Z Fold 2</a></li>
+        <li><a href="#" class="phone-link" data-info="Galaxy Z Flip">Samsung Galaxy Z Flip</a></li>
+    </ul>
+
+    <div class="overlay"></div>
+    <div class="popup" id="popup">
+        <h3 id="phone-name"></h3>
+        <p id="phone-description"></p>
+        <button onclick="closePopup()">Đóng</button>
+    </div>
+
+    <script>
+        const phoneLinks = document.querySelectorAll('.phone-link');
+        const popup = document.getElementById('popup');
+        const overlay = document.querySelector('.overlay');
+        const phoneName = document.getElementById('phone-name');
+        const phoneDescription = document.getElementById('phone-description');
+
+        phoneLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const phone = this.dataset.info;
+                displayPopup(phone);
+            });
+        });
+
+        function displayPopup(phone) {
+            let name = '';
+            let description = '';
+
+            switch (phone) {
+                case 'Galaxy Z Fold 5':
+                    name = 'Samsung Galaxy Z Fold 5';
+                    description = 'Màn hình chính: 7.6 inch Dynamic AMOLED 2X, tần số quét 120Hz. Chip xử lý: Snapdragon 8 Gen 2 for Galaxy.';
+                    break;
+                case 'Galaxy Z Flip 5':
+                    name = 'Samsung Galaxy Z Flip 5';
+                    description = 'Màn hình chính: 6.7 inch Dynamic AMOLED 2X, tần số quét 120Hz. Chip xử lý: Snapdragon 8 Gen 2 for Galaxy.';
+                    break;
+                case 'Galaxy Z Fold 4':
+                    name = 'Samsung Galaxy Z Fold 4';
+                    description = 'Màn hình chính: 7.6 inch Dynamic AMOLED 2X, tần số quét 120Hz. Chip xử lý: Snapdragon 8+ Gen 1.';
+                    break;
+                case 'Galaxy Z Flip 4':
+                    name = 'Samsung Galaxy Z Flip 4';
+                    description = 'Màn hình chính: 6.7 inch Dynamic AMOLED 2X, tần số quét 120Hz. Chip xử lý: Snapdragon 8+ Gen 1.';
+                    break;
+                case 'Galaxy Z Fold 3':
+                    name = 'Samsung Galaxy Z Fold 3';
+                    description = 'Màn hình chính: 7.6 inch Dynamic AMOLED 2X, tần số quét 120Hz. Chip xử lý: Snapdragon 888.';
+                    break;
+                case 'Galaxy Z Flip 3':
+                    name = 'Samsung Galaxy Z Flip 3';
+                    description = 'Màn hình chính: 6.7 inch Dynamic AMOLED 2X, tần số quét 120Hz. Chip xử lý: Snapdragon 888.';
+                    break;
+                case 'Galaxy Z Fold 2':
+                    name = 'Samsung Galaxy Z Fold 2';
+                    description = 'Màn hình chính: 7.6 inch Dynamic AMOLED 2X, tần số quét 120Hz. Chip xử lý: Snapdragon 865+.';
+                    break;
+                case 'Galaxy Z Flip':
+                    name = 'Samsung Galaxy Z Flip';
+                    description = 'Màn hình chính: 6.7 inch Dynamic AMOLED 2X. Chip xử lý: Snapdragon 855+.';
+                    break;
+                default:
+                    name = 'Unknown Phone';
+                    description = 'Thông tin không có sẵn.';
+                    break;
+            }
+
+            phoneName.textContent = name;
+            phoneDescription.textContent = description;
+            popup.style.display = 'block';
+            overlay.style.display = 'block';
+        }
+
+        function closePopup() {
+            popup.style.display = 'none';
+            overlay.style.display = 'none';
+        }
+
+        overlay.addEventListener('click', closePopup);
+    </script>
+</body>
+
+</html>
