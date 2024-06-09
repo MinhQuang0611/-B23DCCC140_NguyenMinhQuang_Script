@@ -1,9 +1,8 @@
-// Lấy thẻ video
 var video = document.getElementById("myVideo");
 
-// Thêm sự kiện "ended"
+
 video.addEventListener("ended", function() {
-    // Khi video kết thúc, quay lại thời điểm 0 và chơi lại
+
     video.play();
 });
 const audio = document.getElementById("background-music");

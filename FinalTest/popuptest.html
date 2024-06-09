@@ -38,16 +38,30 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 300px;
+            width: 400px;
             padding: 20px;
             background-color: #fff;
             border: 1px solid #ccc;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             z-index: 1000;
+            text-align: center;
         }
         
         .popup h3 {
             margin-top: 0;
+        }
+        
+        .popup img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 15px;
+        }
+        
+        .popup p {
+            font-size: 16px;
+            font-weight: normal;
+            color: #333;
+            line-height: 1.5;
         }
         
         .popup button {
@@ -94,6 +108,7 @@
     <div class="overlay"></div>
     <div class="popup" id="popup">
         <h3 id="phone-name"></h3>
+        <img id="phone-image" src="" alt="Phone Image">
         <p id="phone-description"></p>
         <button onclick="closePopup()">Đóng</button>
     </div>
@@ -104,60 +119,70 @@
         const overlay = document.querySelector('.overlay');
         const phoneName = document.getElementById('phone-name');
         const phoneDescription = document.getElementById('phone-description');
+        const phoneImage = document.getElementById('phone-image');
 
-        phoneLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const phone = this.dataset.info;
+        function showPopupWithDelay(phone) {
+            setTimeout(() => {
                 displayPopup(phone);
-            });
-        });
+            }, 2000); // Độ trễ 2 giây (2000 milliseconds)
+        }
 
         function displayPopup(phone) {
             let name = '';
             let description = '';
+            let imageUrl = '';
 
             switch (phone) {
                 case 'Galaxy Z Fold 5':
                     name = 'Samsung Galaxy Z Fold 5';
                     description = 'Màn hình chính: 7.6 inch Dynamic AMOLED 2X, tần số quét 120Hz. Chip xử lý: Snapdragon 8 Gen 2 for Galaxy.';
+                    imageUrl = 'https://example.com/path/to/galaxy-z-fold-5.jpg'; // Thay đổi đường dẫn hình ảnh
                     break;
                 case 'Galaxy Z Flip 5':
                     name = 'Samsung Galaxy Z Flip 5';
                     description = 'Màn hình chính: 6.7 inch Dynamic AMOLED 2X, tần số quét 120Hz. Chip xử lý: Snapdragon 8 Gen 2 for Galaxy.';
+                    imageUrl = 'https://example.com/path/to/galaxy-z-flip-5.jpg'; // Thay đổi đường dẫn hình ảnh
                     break;
                 case 'Galaxy Z Fold 4':
                     name = 'Samsung Galaxy Z Fold 4';
                     description = 'Màn hình chính: 7.6 inch Dynamic AMOLED 2X, tần số quét 120Hz. Chip xử lý: Snapdragon 8+ Gen 1.';
+                    imageUrl = 'https://example.com/path/to/galaxy-z-fold-4.jpg'; // Thay đổi đường dẫn hình ảnh
                     break;
                 case 'Galaxy Z Flip 4':
                     name = 'Samsung Galaxy Z Flip 4';
                     description = 'Màn hình chính: 6.7 inch Dynamic AMOLED 2X, tần số quét 120Hz. Chip xử lý: Snapdragon 8+ Gen 1.';
+                    imageUrl = 'https://example.com/path/to/galaxy-z-flip-4.jpg'; // Thay đổi đường dẫn hình ảnh
                     break;
                 case 'Galaxy Z Fold 3':
                     name = 'Samsung Galaxy Z Fold 3';
                     description = 'Màn hình chính: 7.6 inch Dynamic AMOLED 2X, tần số quét 120Hz. Chip xử lý: Snapdragon 888.';
+                    imageUrl = 'https://example.com/path/to/galaxy-z-fold-3.jpg'; // Thay đổi đường dẫn hình ảnh
                     break;
                 case 'Galaxy Z Flip 3':
                     name = 'Samsung Galaxy Z Flip 3';
                     description = 'Màn hình chính: 6.7 inch Dynamic AMOLED 2X, tần số quét 120Hz. Chip xử lý: Snapdragon 888.';
+                    imageUrl = 'https://example.com/path/to/galaxy-z-flip-3.jpg'; // Thay đổi đường dẫn hình ảnh
                     break;
                 case 'Galaxy Z Fold 2':
                     name = 'Samsung Galaxy Z Fold 2';
                     description = 'Màn hình chính: 7.6 inch Dynamic AMOLED 2X, tần số quét 120Hz. Chip xử lý: Snapdragon 865+.';
+                    imageUrl = 'https://example.com/path/to/galaxy-z-fold-2.jpg'; // Thay đổi đường dẫn hình ảnh
                     break;
                 case 'Galaxy Z Flip':
                     name = 'Samsung Galaxy Z Flip';
                     description = 'Màn hình chính: 6.7 inch Dynamic AMOLED 2X. Chip xử lý: Snapdragon 855+.';
+                    imageUrl = 'https://example.com/path/to/galaxy-z-flip.jpg'; // Thay đổi đường dẫn hình ảnh
                     break;
                 default:
                     name = 'Unknown Phone';
                     description = 'Thông tin không có sẵn.';
+                    imageUrl = '';
                     break;
             }
 
             phoneName.textContent = name;
             phoneDescription.textContent = description;
+            phoneImage.src = imageUrl;
             popup.style.display = 'block';
             overlay.style.display = 'block';
         }
@@ -168,6 +193,14 @@
         }
 
         overlay.addEventListener('click', closePopup);
+
+        phoneLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const phone = this.dataset.info;
+                showPopupWithDelay(phone);
+            });
+        });
     </script>
 </body>
 
