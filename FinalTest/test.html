@@ -1,62 +1,119 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Info</title>
+    <title>Trang Web Demo</title>
     <style>
-        .image-container {
-            position: relative;
-            display: inline-block;
-            cursor: pointer;
-        }
+        /* CSS ở đây */
         
-        .info-box {
-            position: absolute;
+        .header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            position: fixed;
             top: 0;
-            left: 120%;
-            background-color: #fff;
-            border: 1px solid #ccc;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+        
+        .logo {
+            float: left;
+            margin-left: 20px;
+            font-size: 1.5em;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        
+        .menu {
+            float: right;
+            margin-right: 20px;
+        }
+        
+        .menu ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .menu ul li {
+            display: inline-block;
+            margin-left: 20px;
+        }
+        
+        .menu ul li a {
+            color: #fff;
+            text-decoration: none;
             padding: 10px;
-            display: none;
+            transition: all 0.3s ease;
         }
         
-        .info-box.active {
-            display: block;
+        .menu ul li a:hover {
+            background-color: #555;
+            border-radius: 5px;
         }
         
-        img {
-            max-width: 200px;
+        .header.scrolled {
+            background-color: #222;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .header.scrolled .logo {
+            color: #fff;
+        }
+        
+        .header.scrolled .menu ul li a {
+            color: #fff;
         }
     </style>
 </head>
 
 <body>
-
-    <div class="image-container">
-        <img src="https://via.placeholder.com/200" alt="Sample Image">
-        <div class="info-box">
-            <p>This is some information about the image.</p>
-            <p>Additional details can go here.</p>
+    <header class="header">
+        <div class="logo">Logo</div>
+        <div class="menu">
+            <ul>
+                <li><a href="#home">Trang chủ</a></li>
+                <li><a href="#about">Giới thiệu</a></li>
+                <li><a href="#services">Dịch vụ</a></li>
+                <li><a href="#contact">Liên hệ</a></li>
+            </ul>
         </div>
+    </header>
+
+    <div style="padding-top: 70px;">
+        <section id="home">
+            <h1>Trang Chủ</h1>
+            <p>Đây là nội dung trang chủ.</p>
+        </section>
+        <section id="about">
+            <h1>Giới Thiệu</h1>
+            <p>Thông tin về chúng tôi.</p>
+        </section>
+        <section id="services">
+            <h1>Dịch Vụ</h1>
+            <p>Chi tiết các dịch vụ chúng tôi cung cấp.</p>
+        </section>
+        <section id="contact">
+            <h1>Liên Hệ</h1>
+            <p>Cách để liên hệ với chúng tôi.</p>
+        </section>
     </div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var imageContainers = document.querySelectorAll('.image-container');
-
-            imageContainers.forEach(function(container) {
-                var image = container.querySelector('img');
-                var infoBox = container.querySelector('.info-box');
-
-                image.addEventListener('click', function() {
-                    infoBox.classList.toggle('active');
-                });
-            });
+        // JavaScript để thêm class 'scrolled' khi cuộn trang
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
         });
     </script>
-
 </body>
 
 </html>
