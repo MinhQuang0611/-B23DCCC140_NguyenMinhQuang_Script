@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samsung Galaxy Phones</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        
+        .phone-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: space-around;
+        }
+        
+        .phone-item {
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            width: 200px;
+            cursor: pointer;
+        }
+        
+        .phone-item:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            width: 300px;
+            padding: 20px;
+            box-sizing: border-box;
+            opacity: 0;
+            transition: opacity 0.2s ease-in-out;
+        }
+        
+        .popup.show {
+            display: block;
+            opacity: 1;
+        }
+        
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+        
+        .overlay.show {
+            display: block;
+        }
+        
+        .close-btn {
+            display: block;
+            margin: 10px auto 0;
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .phone-description {
+            margin: 20px 0;
+        }
+        
+        .phone-description p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Samsung Galaxy Phones</h2>
+    <div class="phone-list">
+        <div class="phone-item" data-phone="Galaxy Z Fold 5">Samsung Galaxy Z Fold 5</div>
+        <div class="phone-item" data-phone="Galaxy Z Flip 5">Samsung Galaxy Z Flip 5</div>
+        <div class="phone-item" data-phone="Galaxy Note 20 Ultra">Samsung Galaxy Note 20 Ultra</div>
+        <div class="phone-item" data-phone="Galaxy S21 Ultra">Samsung Galaxy S21 Ultra</div>
+        <div class="phone-item" data-phone="Galaxy A72">Samsung Galaxy A72</div>
+        <div class="phone-item" data-phone="Galaxy A52">Samsung Galaxy A52</div>
+    </div>
+
+    <div class="overlay"></div>
+
+    <div class="popup">
+        <h3 id="phone-name"></h3>
+        <img id="phone-image" src="" alt="Phone Image" style="width: 100%; border-radius: 5px;">
+        <div class="phone-description" id="phone-description"></div>
+        <button class="close-btn" onclick="closePopup()">Close</button>
+    </div>
+
+    <script>
+        const phoneList = document.querySelectorAll('.phone-item');
+        const popup = document.querySelector('.popup');
+        const overlay = document.querySelector('.overlay');
+        const phoneName = document.getElementById('phone-name');
+        const phoneImage = document.getElementById('phone-image');
+        const phoneDescription = document.getElementById('phone-description');
+
+        phoneList.forEach(item => {
+            item.addEventListener('click', () => {
+                const phone = item.dataset.phone;
+                fetchPhoneData(phone);
+                setTimeout(() => {
+                    popup.classList.add('show');
+                    overlay.classList.add('show');
+                }, 200); // Delay of 0.2s
+            });
+        });
+
+        function fetchPhoneData(phone) {
+            fetch('https://api.phonedata.co/v1/phones?api_key=YOUR_API_KEY') // Thay YOUR_API_KEY bằng key thực tế của bạn
+                .then(response => response.json())
+                .then(data => {
+                    const phoneData = data.find(p => p.name === phone);
+                    displayPopup(phoneData);
+                })
+                .catch(error => console.error('Error fetching phone data:', error));
+        }
+
+        function displayPopup(data) {
+            phoneName.textContent = data.name;
+            phoneImage.src = data.imageUrl;
+            phoneDescription.innerHTML = data.specs.map(spec => `<p>${spec}</p>`).join('');
+        }
+
+        function closePopup() {
+            popup.classList.remove('show');
+            overlay.classList.remove('show');
+            setTimeout(() => {
+                popup.classList.remove('showing');
+                overlay.classList.remove('showing');
+            }, 200); // Delay of 0.2s
+        }
+    </script>
+</body>
+
+</html>
