@@ -1,7 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Courgette&family=Montserrat:wght@300;400;500;600;700&display=swap");
-
-/* Cài đặt chung */
-
 *,
 *::before,
 *::after {
@@ -10,9 +7,6 @@
     box-sizing: border-box;
 }
 
-
-/* Phong cách cho thẻ body */
-
 body {
     display: flex;
     align-items: center;
@@ -20,12 +14,9 @@ body {
     font-size: 14px;
     color: #000;
     min-height: 100vh;
-    background-image: linear-gradient(120deg, rgba(7, 7, 9, 1) 16%, rgba(27, 24, 113, 1) 96%);
     background-repeat: no-repeat;
+    background-color: dimgray;
 }
-
-
-/* Cài đặt cho nền particles */
 
 #particles-js {
     position: absolute;
@@ -38,16 +29,10 @@ body {
     z-index: -1;
 }
 
-
-/* Container của Swiper */
-
 .swiper {
     width: 100%;
     height: 100%;
 }
-
-
-/* Slide của Swiper */
 
 .swiper-slide {
     position: relative;
@@ -59,16 +44,11 @@ body {
     padding: 130px 60px;
 }
 
-
-/* Phong cách cho nội dung */
-
 .content {
     padding: 0 50px;
-    font-family: "Montserrat", sans-serif;
 }
 
 .content h1 {
-    font-family: "Courgette", cursive;
     font-size: clamp(2.3rem, 5vw, 4rem);
     line-height: 1.3;
     margin-bottom: 30px;
@@ -77,7 +57,6 @@ body {
 }
 
 .content p {
-    font-family: inherit;
     font-size: clamp(1.1rem, 3vw, 0.9rem);
     font-weight: 400;
     line-height: 1.5;
@@ -86,9 +65,6 @@ body {
     text-align: justify;
     pointer-events: none;
 }
-
-
-/* Hiệu ứng chuyển động cho slide */
 
 .swiper-slide .content h1 {
     transform: translateY(-40px);
@@ -110,9 +86,6 @@ body {
     opacity: 1;
 }
 
-
-/* Container cho hình ảnh */
-
 .image-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -127,9 +100,6 @@ body {
     pointer-events: none;
     opacity: 0;
 }
-
-
-/* Hiệu ứng chuyển động cho hình ảnh */
 
 .swiper-slide-active .item {
     animation: fadeIn 0.5s linear 1 forwards;
@@ -147,9 +117,6 @@ body {
     }
 }
 
-
-/* Phong cách cho nút */
-
 .btn {
     max-width: max-content;
     padding: 1rem 2rem;
@@ -161,6 +128,7 @@ body {
     text-align: center;
     backdrop-filter: blur(10px);
     cursor: pointer;
+    text-decoration: none;
 }
 
 .btn::before,
@@ -223,12 +191,6 @@ body {
     opacity: 1;
 }
 
-
-/* Phong cách Responsive */
-
-
-/* Màn hình lớn */
-
 @media (max-width: 1200px) {
     .swiper-slide {
         grid-template-columns: 40% 55%;
@@ -242,9 +204,6 @@ body {
         max-width: 180px;
     }
 }
-
-
-/* Màn hình trung bình */
 
 @media (max-width: 1030px) {
     .swiper-slide {
@@ -261,9 +220,6 @@ body {
     }
 }
 
-
-/* Màn hình nhỏ */
-
 @media (max-width: 960px) {
     .swiper-slide {
         gap: 30px;
@@ -277,9 +233,6 @@ body {
         font-size: 0.9rem;
     }
 }
-
-
-/* Màn hình rất nhỏ */
 
 @media (max-width: 710px) {
     .swiper-slide {
@@ -312,9 +265,6 @@ body {
     }
 }
 
-
-/* Màn hình siêu nhỏ */
-
 @media (max-width: 580px) {
     .swiper-slide {
         grid-template-rows: 40% 55%;
@@ -324,9 +274,6 @@ body {
         max-width: 80px;
     }
 }
-
-
-/* Màn hình cực nhỏ */
 
 @media (max-width: 440px) {
     .swiper-slide {

@@ -1,111 +1,126 @@
-var video = document.getElementById("myVideo");
-
-
-video.addEventListener("ended", function() {
-
-    video.play();
+document.addEventListener('DOMContentLoaded', () => {
+    initGallery();
 });
-const audio = document.getElementById("background-music");
-const playPauseButton = document.getElementById("play-pause-button");
-const playIcon = document.getElementById("play-music");
-const pauseIcon = document.getElementById("pause-music");
 
-let isPlaying = false;
+function initGallery() {
+    const imageSlider = document.querySelector('.image-slider');
+    const prevButton = document.querySelector('.nav-prev');
+    const nextButton = document.querySelector('.nav-next');
 
-function togglePlayPause() {
-    console.log("Toggle function called");
-    if (isPlaying) {
-        audio.pause();
-        playIcon.classList.remove("hidden");
-        pauseIcon.classList.add("hidden");
-    } else {
-        audio.play();
-        playIcon.classList.add("hidden");
-        pauseIcon.classList.remove("hidden");
+    const phones = [{
+        color: 'Pink',
+        src: 'image/pink.jpg'
+    }, {
+        color: 'Yellow',
+        src: 'image/yellow.jpg'
+    }, {
+        color: 'Green',
+        src: 'image/green.jpg'
+    }, {
+        color: 'Blue',
+        src: 'image/blue.jpg'
+    }, {
+        color: 'Black',
+        src: 'image/black.jpg'
+    }];
+
+    phones.forEach(phone => {
+        const phoneContainer = document.createElement('div');
+        phoneContainer.className = 'phone-container';
+        phoneContainer.innerHTML = `
+            <div class="phone-screen">
+                <img src="${phone.src}" alt="${phone.color} iPhone 15" class="phone-image">
+            </div>
+        `;
+        imageSlider.appendChild(phoneContainer);
+    });
+
+    const firstTwo = imageSlider.querySelectorAll('.phone-container:nth-child(-n+2)');
+    const lastTwo = imageSlider.querySelectorAll('.phone-container:nth-last-child(-n+2)');
+    firstTwo.forEach(el => {
+        const clone = el.cloneNode(true);
+        imageSlider.appendChild(clone);
+    });
+    lastTwo.forEach(el => {
+        const clone = el.cloneNode(true);
+        imageSlider.insertBefore(clone, imageSlider.firstChild);
+    });
+
+    const phoneContainers = imageSlider.querySelectorAll('.phone-container');
+    let currentIndex = 2;
+    const totalImages = phones.length;
+    const containerWidth = phoneContainers[0].offsetWidth;
+
+    function updateGallery() {
+        const offset = (imageSlider.offsetWidth - containerWidth) / 2;
+        imageSlider.style.transform = `translateX(${offset - currentIndex * containerWidth}px)`;
+
+        phoneContainers.forEach((container, index) => {
+            if (index === currentIndex) {
+                container.classList.add('active');
+                container.style.transform = 'scale(1)';
+                container.style.opacity = '1';
+            } else {
+                container.classList.remove('active');
+                container.style.transform = 'scale(0.8)';
+                container.style.opacity = '0.7';
+            }
+        });
+
+        if (currentIndex <= 1) {
+            setTimeout(() => {
+                imageSlider.style.transition = 'none';
+                currentIndex = totalImages + 1;
+                updateGallery();
+                setTimeout(() => {
+                    imageSlider.style.transition = 'transform 0.5s ease';
+                }, 50);
+            }, 500);
+        } else if (currentIndex >= totalImages + 2) {
+            setTimeout(() => {
+                imageSlider.style.transition = 'none';
+                currentIndex = 2;
+                updateGallery();
+                setTimeout(() => {
+                    imageSlider.style.transition = 'transform 0.5s ease';
+                }, 50);
+            }, 500);
+        }
     }
-    isPlaying = !isPlaying;
+
+    function showNextImage() {
+        currentIndex++;
+        updateGallery();
+    }
+
+    function showPrevImage() {
+        currentIndex--;
+        updateGallery();
+    }
+
+    nextButton.addEventListener('click', showNextImage);
+    prevButton.addEventListener('click', showPrevImage);
+
+    updateGallery();
+
+    window.addEventListener('resize', updateGallery);
 }
+document.addEventListener('DOMContentLoaded', () => {
+    const links = document.querySelectorAll('nav ul li a');
 
-playPauseButton.addEventListener("click", togglePlayPause);
+    for (const link of links) {
+        link.addEventListener('click', smoothScroll);
+    }
 
-audio.addEventListener("ended", function() {
-    audio.currentTime = 0;
-    audio.play();
-});
+    function smoothScroll(event) {
+        event.preventDefault();
 
-var swiper = new Swiper(".swiper", {
-    grabCursor: true,
-    initialSlide: 4,
-    centeredSlides: true,
-    slidesPerView: "auto",
-    spaceBetween: 10,
-    speed: 1000,
-    freeMode: false,
-    mousewheel: {
-        thresholdDelta: 30,
-    },
-    pagination: {
-        el: ".swiper-pagination",
-    },
-    on: {
-        click(event) {
-            swiper.slideTo(this.clickedIndex);
-        },
-    },
-});
+        const targetId = event.currentTarget.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
 
-particlesJS("particles-js", {
-    particles: {
-        number: {
-            value: 180,
-            density: {
-                enable: true,
-                value_area: 800,
-            },
-        },
-        color: {
-            value: "#fff",
-        },
-        shape: {
-            type: "circle",
-        },
-        opacity: {
-            value: 0.3,
-            random: false,
-            anim: {
-                enable: false,
-                speed: 4,
-                opacity_min: 0.1,
-                sync: false,
-            },
-        },
-        size: {
-            value: 4,
-            random: true,
-            anim: {
-                enable: true,
-                speed: 2,
-                size_min: 0.1,
-                sync: false,
-            },
-        },
-        line_linked: {
-            enable: false,
-        },
-        move: {
-            enable: true,
-            speed: 0.4,
-            direction: "right",
-            random: true,
-            straight: false,
-            out_mode: "none",
-            bounce: false,
-            attract: {
-                enable: false,
-                rotateX: 600,
-                rotateY: 1200,
-            },
-        },
-    },
-    retina_detect: true,
+        window.scrollTo({
+            top: targetSection.offsetTop - 50,
+            behavior: 'smooth'
+        });
+    }
 });
